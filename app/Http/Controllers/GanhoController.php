@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FinancasGanhoRequest;
 use App\Http\Requests\FinancasRequest;
 use App\Models\Ganho;
 use Illuminate\Http\Request;
@@ -25,16 +26,14 @@ class GanhoController extends Controller
         return view('ganhos.create');
     }
 
-    public function store(FinancasRequest $request)
+    public function store(FinancasGanhoRequest $request)
     {
-        $ganho = new Ganho();
-        $ganho->fonte = $request->input('fonte');
-        $ganho->ganho = $request->input('ganho');
-        $ganho->data = $request->input('data');
-        $ganho->month_id = date('m', strtotime($request->input('data')));
-        $ganho->save();
+        $data = $request->validated();
+        $data['month_id'] = date('m', strtotime($data['data']));
+        dd($data);
+        Ganho::create($data);
 
-        return redirect('ganhos');
+        return redirect('/ganhos');
     }
 
 

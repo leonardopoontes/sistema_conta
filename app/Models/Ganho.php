@@ -11,7 +11,7 @@ class Ganho extends Model
 
     protected $fillable = [
         'origem',
-        'valor',
+        'ganho',
         'data',
         'month_id'
     ];

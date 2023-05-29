@@ -12,25 +12,45 @@
 <main class="container">
     <h2>Sistema de contas</h2>
     <form action="{{ route('debts.store') }}" method="post">
+
         @csrf
         <div class="form-group">
             <label for="origem">Origem:</label>
-            <input type="text" class="form-control" name="origem" id="origem">
+            <input type="text"  name="origem" id="origem" class="form-control @error('origem') is-invalid @enderror">
+            @error('origem')
+            <div class="invalid-feedback">
+                {{$message}}
+            </div>
+            @enderror
         </div>
-
         <div class="form-group">
             <label for="descricao">Descrição:</label>
-            <input type="text" class="form-control" name="descricao" id="descricao">
+            <input type="text" name="descricao" id="descricao" class="form-control @error('descricao') is-invalid @enderror">
+            @error('descricao')
+            <div class="invalid-feedback">
+                {{$message}}
+            </div>
+            @enderror
         </div>
 
         <div class="form-group">
             <label for="valor">Valor:</label>
-            <input type="text" class="form-control" name="valor" id="valor">
+            <input type="text" name="valor" id="valor" class="form-control @error('valor') is-invalid @enderror">
+            @error('valor')
+            <div class="invalid-feedback">
+                {{$message}}
+            </div>
+            @enderror
         </div>
 
         <div class="form-group mb-3">
             <label for="vencimento">Vencimento:</label>
-            <input type="date" class="form-control" name="vencimento" id="vencimento">
+            <input type="date" name="vencimento" id="vencimento" class="form-control @error('vencimento') is-invalid @enderror">
+            @error('vencimento')
+            <div class="invalid-feedback">
+                {{$message}}
+            </div>
+            @enderror
         </div>
 
 

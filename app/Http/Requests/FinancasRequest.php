@@ -18,7 +18,6 @@ class FinancasRequest extends FormRequest
         return [
             'origem' => 'required|max:255',
             'valor' => 'required',
-            'data' => 'required|date',
             'descricao' => 'required|max:255',
             'vencimento' => 'required',
         ];
@@ -27,11 +26,10 @@ class FinancasRequest extends FormRequest
     public function messages()
     {
         return [
-            'origem.required' => 'O campo é obrigatório',
-            'valor.required' => 'O campo é obrigatório',
-            'data.required' => 'Esse campo é obrigatório',
-            'descricao.required' => 'O campo é obrigatório',
-            'vencimento.required' => 'O campo é obrigatório',
+            'origem.required' => 'O campo origem é obrigatório',
+            'valor.required' => 'O campo valor é obrigatório',
+            'vencimento.required' => 'Esse campo é obrigatório',
+            'descricao.required' => 'O campo descrição é obrigatório',
 
         ];
     }

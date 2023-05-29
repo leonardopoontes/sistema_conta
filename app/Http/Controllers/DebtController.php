@@ -33,14 +33,10 @@ class DebtController extends Controller
 
     public function store(FinancasRequest $request)
     {
-        $debt = new Debito();
-        $debt->origem = $request->input('origem');
-        $debt->descricao = $request->input('descricao');
-        $debt->valor = $request->input('valor');
-        $debt->vencimento = $request->input('vencimento');
-        $debt->month_id = date('m', strtotime($request->input('vencimento')));
-        $debt->save();
+        $data = $request->validated();
+        $data['month_id'] = date('m', strtotime($data['vencimento']));
 
+        Debito::create($data);
 
         return redirect('/debts');
     }

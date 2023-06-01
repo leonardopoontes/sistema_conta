@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('ganhos', function (Blueprint $table) {
-            $table->foreignId('month_id')->constrained('months');
+        Schema::table('debitos', function (Blueprint $table) {
+            $table->unsignedBigInteger('month_id')->after('user_id');
         });
-
     }
 
     /**
@@ -22,10 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('ganhos', function (Blueprint $table) {
-            $table->dropForeign(['month_id']);
+        Schema::table('debitos', function (Blueprint $table) {
             $table->dropColumn('month_id');
         });
-
     }
 };

@@ -2,8 +2,7 @@
 
     @section('content')
         <div>
-            <h2>Debitos</h2>
-            @include('debts.index', ['debts' => $debts, 'totalDebts' => $totalDebts, 'selectedMonth' => $selectedMonth])
+            <h2>kkkkkk</h2>
 
         </div>
     @endsection

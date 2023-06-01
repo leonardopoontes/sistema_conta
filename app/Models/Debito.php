@@ -14,7 +14,8 @@ class Debito extends Model
         'descricao',
         'valor',
         'vencimento',
-        'month_id'
+        'month_id',
+        'user_id'
     ];
 
     public function month()
@@ -22,7 +23,9 @@ class Debito extends Model
         return $this->belongsTo(Month::class, 'month_id');
     }
 
-
-
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
 }

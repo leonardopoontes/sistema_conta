@@ -17,8 +17,9 @@ return new class extends Migration
             $table->string('descricao');
             $table->float('valor');
             $table->date('vencimento');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
-
             $table->foreignId('month_id')->constrained('months');
         });
     }

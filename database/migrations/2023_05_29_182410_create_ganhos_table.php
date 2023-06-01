@@ -17,8 +17,8 @@ return new class extends Migration
             $table->float('ganho');
             $table->date('data');
             $table->timestamps();
-//            $table->unsignedBigInteger('month_id');
-//            $table->foreign('month_id')->references('id')->on('months_id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

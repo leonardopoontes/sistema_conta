@@ -15,8 +15,10 @@ class DebtController extends Controller
     {
         $selectedMonth = $request->input('month') ?? date('m');
 
-        $debts = Debito::whereMonth('vencimento', $selectedMonth)->get();
-        $totalDebts = Debito::sum('valor');
+        $user = auth()->user(); // Obtém o usuário autenticado
+
+        $debts = $user->debitos()->whereMonth('vencimento', $selectedMonth)->get();
+        $totalDebts = $user->debitos()->whereMonth('vencimento', $selectedMonth)->sum('valor');
 
         return view('debts.index', [
             'debts' => $debts,
@@ -35,6 +37,7 @@ class DebtController extends Controller
     {
         $data = $request->validated();
         $data['month_id'] = date('m', strtotime($data['vencimento']));
+        $data['user_id'] = auth()->user()->id;
 
         Debito::create($data);
 

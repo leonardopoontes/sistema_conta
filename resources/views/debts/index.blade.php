@@ -1,10 +1,10 @@
+<x-app-layout>
 <x-layout>
-
         @csrf
         <div class="row">
             <div class="mb-5">
                     @foreach (range(1,12) as $month)
-                        <a href="{{ route('debts.index', ['month' => $month]) }}" class="btn btn-primary">{{ date('F', mktime(0, 0, 0, $month, 1)) }}</a>
+                        <a href="{{ route('debts.index', ['month' => $month]) }}" class="btn btn-secondary">{{ date('F', mktime(0, 0, 0, $month, 1)) }}</a>
                     @endforeach
             </div>
             <div>
@@ -46,28 +46,25 @@
                         </tr>
                     @endforeach
 
-                    <tr>
-                            <td>Total</td>
+                    <tr class="table-info">
+                        <td>Total</td>
                             <td>-</td>
                             <td>-</td>
                             <td>R$ {{ $totalDebts }}</td>
-                            <td>-</td>
-                        </tr>
+                        <td>-</td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
 
             <div class="mb-3">
                 <!-- adicionar entrada de dinheiro !-->
-                <a href="/ganhos/create" class="btn btn-primary">Adicionar Entrada</a>
                 <h4>Entradas</h4>
-
-                <x-teste>
-
-                </x-teste>
-
+                <a href="/ganhos/create" class="btn btn-primary mt-2">Adicionar Entrada</a>
+                <a href="/ganhos/" class="btn btn-primary mt-2">Ver Entradas</a>
             </div>
         </div>
 
 
 </x-layout>
+</x-app-layout>

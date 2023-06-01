@@ -10,10 +10,14 @@ use Illuminate\Http\Request;
 class GanhoController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $ganhos = Ganho::all();
-        $ganhostotal = Ganho::sum('ganho');
+        $selectedMonth = $request->input('month') ?? date('m');
+
+        $user = auth()->user(); // Obtém o usuário autenticado
+
+        $ganhos = $user->ganhos()->whereMonth('data', $selectedMonth)->get();
+        $ganhostotal = $user->ganhos()->whereMonth('data', $selectedMonth)->sum('ganho');
 
         return view('ganhos.index', [
             'ganhos' => $ganhos,
@@ -30,7 +34,7 @@ class GanhoController extends Controller
     {
         $data = $request->validated();
         $data['month_id'] = date('m', strtotime($data['data']));
-        dd($data);
+        $data['user_id'] = auth()->user()->id;
         Ganho::create($data);
 
         return redirect('/ganhos');

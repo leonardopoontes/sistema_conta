@@ -10,14 +10,20 @@ class Ganho extends Model
     use HasFactory;
 
     protected $fillable = [
-        'origem',
+        'fonte',
         'ganho',
         'data',
-        'month_id'
+        'month_id',
+        'user_id'
     ];
 
     public function month()
     {
         return $this->belongsTo(Month::class, 'month_id');
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('/index');
 });
 
 
@@ -47,11 +47,6 @@ Route::middleware('auth')->group(function () {
     Route::put('/ganhos/edit/{id}', [GanhoController::class, 'update'])->name('ganhos.update');
     //Route::delete('/ganhos/delete/{id}', [GanhoController::class, 'destroy'])->name('ganhos.destroy');
     Route::delete('/ganhos/delete/{id}', [GanhoController::class, 'destroy'])->name('ganhos.destroy');
-
-
-    Route::get('/financeiro', function () {
-        return view('financeiro');
-    });
 
 
 });

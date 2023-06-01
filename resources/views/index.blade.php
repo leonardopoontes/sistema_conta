@@ -10,8 +10,19 @@
 </head>
 <body>
 <main class="container">
-    <h2>Sistema de contas</h2>
-        {{$slot}}
+    <div class="justify-center">
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h2 class="mb-4">Bem-vindo</h2>
+                        <a href="/login" class="btn btn-primary mr-3">Login</a>
+                        <a href="/register" class="btn btn-secondary">Registrar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </main>
 

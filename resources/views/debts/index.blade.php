@@ -32,7 +32,7 @@
                             <td>{{ $debt->origem }}</td>
                             <td>{{ $debt->descricao }}</td>
                             <td>R$ {{ $debt->valor }}</td>
-                            <td>{{ $debt->vencimento  }}</td>
+                            <td>{{ date('d - m - Y', strtotime($debt->vencimento)) }}</td>
                             <td>
                                 <a href="{{ route('debts.edit', $debt->id) }}" type="button" class="btn btn-success">Editar</a>
                             </td>

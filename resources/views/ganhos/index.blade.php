@@ -27,7 +27,7 @@
             <td>{{ $ganho->id }}</td>
             <td>{{ $ganho->fonte }}</td>
             <td>R$ {{ $ganho->ganho }}</td>
-            <td>{{ $ganho->data }}</td>
+            <td>{{ date('d - m - Y', strtotime($ganho->data)) }}</td>
             <td>
                 <a href="{{ route('ganhos.edit', $ganho->id) }}" type="buttton" class="btn btn-success">Editar</a>
             </td>
